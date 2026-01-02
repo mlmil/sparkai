@@ -1,0 +1,852 @@
+:root {
+    --bg-color: #050505;
+    --text-color: #e0e0e0;
+    --accent-color: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    /* Changed from overflow: hidden to allow scroll */
+    overflow-y: auto;
+    /* Ensure vertical scroll is possible */
+}
+
+/* --- Navigation Styles --- */
+.main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 3rem;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    /* Align to right */
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.9) 0%, rgba(5, 5, 5, 0) 100%);
+    pointer-events: none;
+    /* Let clicks pass through empty areas */
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    pointer-events: auto;
+    /* Re-enable pointer events for links */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #d95d1e;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3vh 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.locations {
+    display: flex;
+    gap: 3vw;
+    font-size: 0.8rem;
+    font-weight: 200;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0;
+    /* Removed margin since it's at top now */
+    width: 100%;
+    justify-content: center;
+    /* Ensure centered */
+    padding-top: 1rem;
+}
+
+.schematic-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* Add a subtle glow or vignette behind the plug if needed */
+}
+
+.hero-image {
+    max-height: 60vh;
+    max-width: 100%;
+    object-fit: contain;
+    opacity: 1;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.title {
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-weight: 200;
+    font-size: clamp(3rem, 8vw, 6rem);
+    /* Responsive font size */
+    letter-spacing: 0.15em;
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-family: 'Avenir', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    letter-spacing: 0.6em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.line {
+    width: 1px;
+    height: 80px;
+    /* Reduced height slightly */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+    margin-top: 0.5rem;
+}
+
+/* Optional: Background texture/noise to give it that industrial feel */
+/* Background texture with Opacity */
+/* --- Single Page Section Styles --- */
+
+.page-section {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically by default */
+    align-items: center;
+    padding: 4rem 2rem;
+    overflow: hidden;
+    /* Ensure backgrounds don't spill */
+    z-index: 1;
+    /* Ensure content stack */
+}
+
+/* Backgrounds using pseudo-elements for opacity control */
+.page-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: opacity 1s ease;
+}
+
+#home::before {
+    background-image: url('assets/images/home_bg.jpg');
+    opacity: 0.1;
+}
+
+#what-we-do::before {
+    background-image: url('assets/images/what_we_do_bg.jpg');
+    opacity: 0.15;
+}
+
+#who-we-are::before {
+    background-image: url('assets/images/who_we_are_bg.jpg');
+    opacity: 0.15;
+}
+
+#how-we-do-it::before {
+    background-image: url('assets/images/how_we_do_it_bg.jpg');
+    opacity: 0.15;
+}
+
+#the-journey::before {
+    background-image: url('assets/images/journey_bg_final.png');
+    /* The journey image was previously full opacity 1 with text shadow. 
+       Let's keep it consistent or follow the pattern. 
+       Reverting to standard background behavior for consistency if possible, 
+       but previous implementation was direct background. 
+       Let's stick to the pattern but maybe higher opacity if needed, 
+       or just 1 if it's a photo that needs to be clear. 
+       User said "make the image appear first", implying visibility.
+       Let's try 0.3 or similar styling to others if it's meant to be a texture,
+       BUT the journey image seemed to be a specific photo. 
+       Checking previous file... it was .journey-page { background-image... }
+       Let's use opacity 0.4 to ensure text readability or 1 if it's dark enough.
+       Let's use 1 but ensure text shadow is good.
+    */
+    opacity: 1;
+}
+
+#contact-us::before {
+    background-image: url('assets/images/pexels-pixabay-159298.jpg');
+    opacity: 0.4;
+}
+
+/* Text Fade-In Animation */
+.fade-in-text {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    will-change: opacity, transform;
+}
+
+.fade-in-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific Page Overrides within Sections */
+#what-we-do .content-grid {
+    /* Ensure grid fits within section */
+    flex-grow: 1;
+}
+
+#home {
+    justify-content: space-between;
+    /* Match original container layout */
+}
+
+
+/* --- What We Do Page Styles --- */
+
+.what-we-do-page {
+    justify-content: flex-start;
+    /* Override space-between */
+}
+
+.page-title {
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-weight: 100;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1400px;
+    flex-grow: 1;
+    align-items: center;
+    /* Vertically center content */
+}
+
+.text-column {
+    font-family: 'Avenir', sans-serif;
+    font-size: clamp(1rem, 1.2vw, 1.4rem);
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+.text-column p {
+    margin-bottom: 1.5rem;
+}
+
+.highlight-orange {
+    color: #d95d1e;
+    /* Approximate orange from logo/theme if exists, or a nice contrast */
+    font-weight: 600;
+}
+
+.list-column {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.industry-list {
+    list-style: none;
+    padding: 0;
+}
+
+.industry-list li {
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-weight: 400;
+    font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+}
+
+.industry-list li:hover {
+    color: #d95d1e;
+    /* Highlight color on hover */
+    transform: translateX(-5px);
+}
+
+.bottom-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    margin-top: auto;
+    /* Push to bottom */
+    padding-top: 2rem;
+}
+
+.label:nth-child(1) {
+    text-align: left;
+}
+
+.label:nth-child(2) {
+    text-align: center;
+}
+
+.label:nth-child(3) {
+    text-align: right;
+}
+
+.label {
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+/* --- Who We Are Page Styles --- */
+
+
+
+.centered-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1100px;
+    /* Reduced by ~30% from 1400px */
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.centered-content p {
+    font-family: 'Avenir', sans-serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.9rem);
+    /* Reduced by ~30% */
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+/* --- The Journey Page Styles --- */
+
+.journey-page {
+    background-image: url('assets/images/bio%20LARGE%20copy.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+    justify-content: flex-start;
+    padding-top: 2rem;
+}
+
+/* Add an overlay to improve text readability if needed */
+.journey-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    /* Removed overlay as per user request */
+    z-index: -1;
+}
+
+.two-column-content {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35%;
+    /* Large gap to push text to sides */
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    position: relative;
+    /* Ensure text is above overlay */
+    z-index: 2;
+}
+
+.two-column-content .column p {
+    font-family: 'Avenir', sans-serif;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    line-height: 1.6;
+    color: #f0f0f0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    /* Shadow for readability against image */
+}
+
+/* Left column alignment */
+.two-column-content .column:first-child p {
+    text-align: right;
+    /* Align towards the center image or keep left? Standard readability usually left or justify. User said "copy on sides". */
+    /* Let's try justified or left for left block, and maybe left for right block. */
+    text-align: left;
+}
+
+/* Right column alignment */
+.two-column-content .column:last-child p {
+    text-align: left;
+}
+
+
+@media (max-width: 1000px) {
+    .two-column-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 2rem;
+        background: rgba(0, 0, 0, 0.6);
+        /* Darker background for mobile readability */
+        margin: 2rem;
+        border-radius: 10px;
+    }
+
+    .two-column-content .column p {
+        text-align: center;
+    }
+}
+
+/* --- Modal Styles --- */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(5, 5, 5, 0.6);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    /* Flex alignment properties (applied when JS sets display: flex) */
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* Open state handled by JS setting display: flex and adding .show class */
+.modal[style*="display: flex"] {
+    pointer-events: auto;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: #121212;
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 90%;
+    max-width: 650px;
+    color: #e0e0e0;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.modal.show .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.close-button {
+    color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #d95d1e;
+    transform: rotate(90deg);
+    text-decoration: none;
+}
+
+#modalTitle {
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    color: #d95d1e;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+}
+
+#modalBody {
+    font-family: 'Avenir', sans-serif;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .list-column {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .industry-list li:hover {
+        transform: scale(1.05);
+        /* Different hover effect for touch/center layout */
+    }
+
+    .bottom-labels {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+
+/* --- Chat Interface Styles --- */
+
+.chat-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+
+.chat-window {
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    /* Ensure reasonable height */
+}
+
+.chat-header {
+    background-color: #1a1a1a;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.control.red {
+    background-color: #ff5f56;
+}
+
+.control.yellow {
+    background-color: #ffbd2e;
+}
+
+.control.green {
+    background-color: #27c93f;
+}
+
+.window-title {
+    font-family: 'Avenir', monospace;
+    /* Monospace feel */
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+}
+
+.chat-content {
+    padding: 2.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center message vertically */
+}
+
+.system-message {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.msg-avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.msg-avatar img {
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
+}
+
+.msg-body {
+    font-family: 'Avenir', monospace;
+    color: #e0e0e0;
+}
+
+.msg-sender {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+}
+
+.msg-text {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.contact-details {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-details div {
+    margin-bottom: 0.4rem;
+}
+
+.chat-input-area {
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.chat-input {
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: 'Avenir', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.chat-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.send-btn {
+    background-color: #d95d1e;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    /* Disabled for now */
+    transition: background-color 0.3s ease;
+}
+
+.send-btn:hover {
+    background-color: #bf4d15;
+}
+
+@media (max-width: 600px) {
+    .chat-container {
+        padding: 0 1rem;
+    }
+
+    .chat-content {
+        padding: 1.5rem;
+    }
+
+    .system-message {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Header Info Styles */
+.header-info {
+    font-family: 'Avenir', monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    gap: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.info-item {
+    position: relative;
+    cursor: default;
+    transition: color 0.3s ease;
+}
+
+.info-item:hover {
+    color: #d95d1e;
+}
+
+/* Chat Input Cursor and Focus */
+.chat-input {
+    caret-color: #d95d1e;
+    /* Orange caret */
+}
+
+.chat-input:focus {
+    border-color: rgba(217, 93, 30, 0.5);
+    /* Orange border on focus */
+    box-shadow: 0 0 10px rgba(217, 93, 30, 0.1);
+}
+
+/* User Message Styling */
+.user-message {
+    align-self: flex-end;
+    background-color: rgba(217, 93, 30, 0.1);
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(217, 93, 30, 0.2);
+    max-width: 80%;
+    font-family: 'Avenir', monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .header-info {
+        display: none;
+        /* Hide on small screens or stack them */
+    }
+}
+
+/* --- Modal Content Styles --- */
+#modalBody ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#modalBody li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+#modalBody h4 {
+    color: #d95d1e;
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+#modalBody h4:first-child {
+    margin-top: 0;
+}
+
+#modalBody strong {
+    color: #ffffff;
+    font-weight: 600;
+}

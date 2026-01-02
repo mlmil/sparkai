@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK.STUDIO</title>
+    <link rel="stylesheet" href="style.css?v=3">
+    <style>
+        .studio-container {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .studio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-family: 'Avenir Next', 'Avenir', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #d95d1e;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .photo-item {
+            aspect-ratio: 16/9;
+            background-color: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="studio-container fade-in-text visible">
+        <header class="studio-header">
+            <h1 class="page-title" style="margin: 0; text-align: left;">SPARK.STUDIO</h1>
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </header>
+
+        <div class="photo-grid">
+            <div class="photo-item">
+                <img src="assets/images/studio_1.jpg" alt="Studio Production 1">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_2.jpg" alt="Studio Production 2">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_3.jpg" alt="Studio Production 3">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_4.jpg" alt="Studio Production 4">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_6.jpg" alt="Studio Production 6">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_7.jpg" alt="Studio Production 7">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_8.jpg" alt="Studio Production 8">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_9.jpg" alt="Studio Production 9">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_10.jpg" alt="Studio Production 10">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_11.jpg" alt="Studio Production 11">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_12.jpg" alt="Studio Production 12">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_13.jpg" alt="Studio Production 13">
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/studio_14.jpg" alt="Studio Production 14">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
