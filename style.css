@@ -399,10 +399,12 @@ footer {
 }
 
 .journey-hero-image {
-    width: 100%;
-    height: auto;
+    width: auto;
+    max-width: 100%;
+    max-height: 85vh;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
+    margin: 0 auto;
 }
 
 /* Add an overlay to improve text readability if needed */
@@ -848,4 +850,16 @@ footer {
 #modalBody strong {
     color: #ffffff;
     font-weight: 600;
+}
+
+/* --- Mobile Locations Centering --- */
+@media (max-width: 768px) {
+    .locations {
+        justify-content: center;
+        flex-wrap: wrap;
+        text-align: center;
+        gap: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
