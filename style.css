@@ -390,13 +390,19 @@ footer {
 /* --- The Journey Page Styles --- */
 
 .journey-page {
-    background-image: url('assets/images/bio%20LARGE%20copy.png');
-    background-size: cover;
-    background-position: center;
     position: relative;
     z-index: 1;
     justify-content: flex-start;
-    padding-top: 2rem;
+    padding: 0;
+    height: auto;
+    min-height: 100vh;
+}
+
+.journey-hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 /* Add an overlay to improve text readability if needed */
@@ -416,14 +422,12 @@ footer {
     flex-grow: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 35%;
-    /* Large gap to push text to sides */
-    align-items: center;
-    max-width: 1600px;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 4rem;
+    padding: 2rem 4rem 6rem;
     position: relative;
-    /* Ensure text is above overlay */
     z-index: 2;
 }
 
@@ -431,16 +435,11 @@ footer {
     font-family: 'Avenir', sans-serif;
     font-size: clamp(0.9rem, 1.2vw, 1.2rem);
     line-height: 1.6;
-    color: #f0f0f0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-    /* Shadow for readability against image */
+    color: #e0e0e0;
 }
 
 /* Left column alignment */
 .two-column-content .column:first-child p {
-    text-align: right;
-    /* Align towards the center image or keep left? Standard readability usually left or justify. User said "copy on sides". */
-    /* Let's try justified or left for left block, and maybe left for right block. */
     text-align: left;
 }
 
