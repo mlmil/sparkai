@@ -932,3 +932,25 @@ footer {
     height: 20px;
     fill: currentColor;
 }
+
+/* --- Instagram Link Styles (Moved to Left) --- */
+.nav-left a {
+    pointer-events: auto;
+    margin-top: 0.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-left a:hover {
+    color: #d95d1e;
+    transform: scale(1.1);
+}
+
+.nav-left svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
