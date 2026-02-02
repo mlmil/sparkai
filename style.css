@@ -92,27 +92,45 @@ body {
     top: 50%;
     transform: translateY(-50%);
     display: flex;
-    flex-direction: column;
-    /* Stacked under */
+    flex-direction: row;
+    /* Horizontal layout for Brand + Icon */
     align-items: center;
-    /* Centered relative to each other */
-    gap: 0.2rem;
+    gap: 1.5rem;
+    /* Space between brand and icon */
     pointer-events: none;
 }
 
-.nav-left img {
+.nav-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.nav-brand img {
     height: 32px;
     width: auto;
     opacity: 0.9;
 }
 
-.nav-left span {
+.nav-brand span {
     font-family: 'Avenir Next', 'Avenir', sans-serif;
     font-size: 0.6rem;
-    /* Smaller to fit under */
     color: rgba(255, 255, 255, 0.7);
     letter-spacing: 1px;
     font-weight: 500;
+}
+
+/* --- Instagram Link Styles (Moved to Left) --- */
+.nav-left a {
+    pointer-events: auto;
+    margin-top: 0;
+    /* REMOVED margin-top */
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
@@ -913,10 +931,12 @@ footer {
         border-radius: 8px;
     }
 }
+
 /* --- Instagram Link Styles --- */
 .nav-contact a {
     color: rgba(255, 255, 255, 0.6);
-    pointer-events: auto; /* Enable clicking */
+    pointer-events: auto;
+    /* Enable clicking */
     display: inline-block;
     margin-top: 0.5rem;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -928,28 +948,6 @@ footer {
 }
 
 .nav-contact svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-}
-
-/* --- Instagram Link Styles (Moved to Left) --- */
-.nav-left a {
-    pointer-events: auto;
-    margin-top: 0.5rem;
-    color: rgba(255, 255, 255, 0.6);
-    transition: color 0.3s ease, transform 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-left a:hover {
-    color: #d95d1e;
-    transform: scale(1.1);
-}
-
-.nav-left svg {
     width: 20px;
     height: 20px;
     fill: currentColor;
