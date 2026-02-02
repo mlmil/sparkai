@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK.AI DEPLOYMENT</title>
+    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="gemini-chat.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .deployment-container {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .deployment-header {
+            margin-bottom: 3rem;
+            text-align: center;
+            /* Ensure header elements are centered */
+        }
+
+        .deployment-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-family: 'Avenir Next', 'Avenir', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .back-link:hover {
+            color: #d95d1e;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="main-nav">
+        <div class="nav-left">
+            <img src="assets/images/gemini_logo.png" alt="Gemini Logo">
+            <span>POWERED BY GEMINI 3</span>
+        </div>
+        <ul>
+            <li><a href="studio.html">SPARK.STUDIO</a></li>
+            <li><a href="lab.html">SPARK.LAB</a></li>
+            <li><a href="deployment.html" class="active">SPARK.AI</a></li>
+        </ul>
+        <div class="nav-contact">
+            <div>805-626-7720</div>
+            <div>Market Street Corridor</div>
+            <div>Ventura, CA</div>
+        </div>
+    </nav>
+
+    <div class="deployment-container fade-in-text visible">
+        <header class="deployment-header">
+            <h1 class="page-title">SPARK.AI DEPLOYMENT</h1>
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </header>
+
+        <img src="assets/images/spark_deployment_tiers.jpg" alt="SPARK.AI Deployment Tiers" class="deployment-image">
+    </div>
+
+    <script src="script.js"></script>
+    <script src="gemini-chat.js"></script>
+</body>
+
+</html>

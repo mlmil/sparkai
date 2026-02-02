@@ -26,34 +26,41 @@ body {
 }
 
 /* --- Navigation Styles --- */
+/* --- Navigation Styles --- */
 .main-nav {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    padding: 1.5rem 3rem;
-    z-index: 1000;
+    padding: 1.5rem 0;
+    z-index: 9999;
     display: flex;
-    justify-content: flex-end;
-    /* Align to right */
-    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.9) 0%, rgba(5, 5, 5, 0) 100%);
-    pointer-events: none;
-    /* Let clicks pass through empty areas */
+    justify-content: center;
+    /* Centered as per request for 'bar on top' usually implies centering or specific layout, but user said 'has ... on the top'. Current CSS was justify-content: flex-end. Use center for standard top bar presence? Or Space evenly? The previous bottom labels were distributed. I'll stick to a clean centered or space-between. Let's try centered for now as it's a "permanent bar". */
+    background: rgba(5, 5, 5, 0.95);
+    /* More solid background for readability */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateZ(0);
+    /* Force hardware layers to prevent flickering/disappearing */
 }
 
 .main-nav ul {
     display: flex;
     list-style: none;
-    gap: 2rem;
-    pointer-events: auto;
-    /* Re-enable pointer events for links */
+    gap: 8rem;
+    /* Increased spacing */
+    margin: 0;
+    padding: 0;
 }
 
 .main-nav a {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.7);
     font-family: 'Avenir Next', 'Avenir', sans-serif;
-    font-weight: 400;
-    font-size: 0.9rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+    /* Much bigger */
     letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: color 0.3s ease;
@@ -62,6 +69,50 @@ body {
 .main-nav a:hover,
 .main-nav a.active {
     color: #d95d1e;
+}
+
+.nav-contact {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.2;
+    font-weight: 400;
+    pointer-events: none;
+    /* Let clicks pass through if overlaps (though it shouldn't) */
+}
+
+.nav-left {
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    /* Stacked under */
+    align-items: center;
+    /* Centered relative to each other */
+    gap: 0.2rem;
+    pointer-events: none;
+}
+
+.nav-left img {
+    height: 32px;
+    width: auto;
+    opacity: 0.9;
+}
+
+.nav-left span {
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-size: 0.6rem;
+    /* Smaller to fit under */
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+    font-weight: 500;
 }
 
 .container {
@@ -75,21 +126,7 @@ body {
     z-index: 10;
 }
 
-.locations {
-    display: flex;
-    gap: 3vw;
-    font-size: 0.8rem;
-    font-weight: 200;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.8);
-    margin-top: 0;
-    /* Removed margin since it's at top now */
-    width: 100%;
-    justify-content: center;
-    /* Ensure centered */
-    padding-top: 1rem;
-}
+
 
 .schematic-container {
     flex-grow: 1;
@@ -209,26 +246,19 @@ footer {
 }
 
 #the-journey::before {
-    background-image: url('assets/images/journey_bg.png');
-    /* The journey image was previously full opacity 1 with text shadow. 
-       Let's keep it consistent or follow the pattern. 
-       Reverting to standard background behavior for consistency if possible, 
-       but previous implementation was direct background. 
-       Let's stick to the pattern but maybe higher opacity if needed, 
-       or just 1 if it's a photo that needs to be clear. 
-       User said "make the image appear first", implying visibility.
-       Let's try 0.3 or similar styling to others if it's meant to be a texture,
-       BUT the journey image seemed to be a specific photo. 
-       Checking previous file... it was .journey-page { background-image... }
-       Let's use opacity 0.4 to ensure text readability or 1 if it's dark enough.
-       Let's use 1 but ensure text shadow is good.
-    */
-    opacity: 1;
+    background-image: none;
+    opacity: 0;
+    /* Removed background image as per user request */
 }
 
 #contact-us::before {
     background-image: url('assets/images/pexels-pixabay-159298.jpg');
     opacity: 0.4;
+}
+
+#spark-deploy::before {
+    background-image: url('assets/images/how_we_do_it_bg.jpg');
+    opacity: 0.08;
 }
 
 /* Text Fade-In Animation */
@@ -333,35 +363,7 @@ footer {
     transform: translateX(-5px);
 }
 
-.bottom-labels {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 100%;
-    margin-top: auto;
-    /* Push to bottom */
-    padding-top: 2rem;
-}
 
-.label:nth-child(1) {
-    text-align: left;
-}
-
-.label:nth-child(2) {
-    text-align: center;
-}
-
-.label:nth-child(3) {
-    text-align: right;
-}
-
-.label {
-    font-family: 'Avenir Next', 'Avenir', sans-serif;
-    font-weight: 300;
-    font-size: clamp(1.2rem, 2vw, 2rem);
-    letter-spacing: 0.1em;
-    color: #ffffff;
-    text-transform: uppercase;
-}
 
 /* --- Who We Are Page Styles --- */
 
@@ -861,5 +863,53 @@ footer {
         gap: 1rem;
         padding-left: 1rem;
         padding-right: 1rem;
+    }
+}
+
+/* --- SPARK.DEPLOY Section Styles --- */
+.deploy-section {
+    background: linear-gradient(180deg, rgba(5, 5, 5, 0.95) 0%, rgba(15, 15, 15, 0.98) 100%);
+    padding: 6rem 2rem;
+}
+
+.deploy-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deploy-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+        0 10px 30px rgba(217, 93, 30, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.deploy-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7),
+        0 15px 40px rgba(217, 93, 30, 0.2);
+}
+
+/* Responsive adjustments for SPARK.DEPLOY */
+@media (max-width: 1200px) {
+    .deploy-content {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .deploy-section {
+        padding: 4rem 1rem;
+    }
+
+    .deploy-image {
+        border-radius: 8px;
     }
 }

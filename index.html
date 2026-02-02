@@ -5,12 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPARK Agentic Systems</title>
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="gemini-chat.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
+
+    <nav class="main-nav">
+        <div class="nav-left">
+            <img src="assets/images/gemini_logo.png" alt="Gemini Logo">
+            <span>POWERED BY GEMINI 3</span>
+        </div>
+        <ul>
+            <li><a href="studio.html">SPARK.STUDIO</a></li>
+            <li><a href="lab.html">SPARK.LAB</a></li>
+            <li><a href="deployment.html">SPARK.AI</a></li>
+        </ul>
+        <div class="nav-contact">
+            <div>805-626-7720</div>
+            <div>Market Street Corridor</div>
+            <div>Ventura, CA</div>
+        </div>
+    </nav>
+
     <div id="smooth-wrapper">
         <div id="smooth-content">
 
@@ -20,18 +39,14 @@
                     <div class="logo">
                         <!-- Logo or Home Link if needed, can be empty or added later -->
                     </div>
-                    <div class="locations">
-                        <span>VENTURA</span>
-                        <span>SANTA BARBARA</span>
-                        <span>LOS ANGELES</span>
-                    </div>
+
                 </header>
 
                 <main class="schematic-container fade-in-text">
                     <img src="assets/images/spark_plug_transparent.png" alt="SPARK Star Schematic" class="hero-image">
                     <div class="brand">
                         <div class="title">SPARK.AI</div>
-                        <div class="subtitle">WORKSHOPS - CONSULTANCY - COACHING - APPLIED AGENTICS</div>
+                        <div class="subtitle">WORKSHOPS - CONSULTANCY - STRATEGY - APPLIED AGENTICS</div>
                         <div class="line"></div>
                     </div>
                 </main>
@@ -73,7 +88,7 @@
                             <li data-industry="wineries">WINERIES</li>
                             <li data-industry="music">MUSIC STUDIOS</li>
                             <li data-industry="agriculture">AGRICULTURE & MARINE</li>
-                            <li data-industry="retail">RETAIL COMMERECE</li>
+                            <li data-industry="retail">RETAIL COMMERCE</li>
                             <li data-industry="insurance">INSURANCE AGENCIES</li>
                             <li data-industry="venues">PERFORMANCE & MUSIC VENUES</li>
                             <li data-industry="hospitality">RESTAURANT & HOSPITALITY</li>
@@ -85,11 +100,7 @@
                     </div>
                 </div>
 
-                <div class="bottom-labels fade-in-text">
-                    <span class="label">SPARK.STUDIO</span>
-                    <span class="label">SPARK.LAB</span>
-                    <span class="label">SPARK.AI</span>
-                </div>
+
             </section>
 
             <!-- SECTION 3: WHO WE ARE -->
@@ -116,11 +127,7 @@
                     </p>
                 </div>
 
-                <div class="bottom-labels fade-in-text">
-                    <span class="label">SPARK.STUDIO</span>
-                    <span class="label">SPARK.LAB</span>
-                    <span class="label">SPARK.AI</span>
-                </div>
+
             </section>
 
             <!-- SECTION 4: HOW WE DO IT -->
@@ -149,14 +156,20 @@
                     </p>
                 </div>
 
-                <div class="bottom-labels fade-in-text">
-                    <span class="label">SPARK.STUDIO</span>
-                    <span class="label">SPARK.LAB</span>
-                    <span class="label">SPARK.AI</span>
+
+            </section>
+
+            <!-- SECTION 5: SPARK.DEPLOY ---->
+            <section id="spark-deploy" class="page-section deploy-section">
+                <h1 class="page-title fade-in-text">SPARK.DEPLOY</h1>
+
+                <div class="deploy-content fade-in-text">
+                    <img src="assets/images/spark-deploy-tiers.jpg"
+                        alt="SPARK.DEPLOY - Run AI locally. Keep your data yours." class="deploy-image">
                 </div>
             </section>
 
-            <!-- SECTION 5: THE JOURNEY -->
+            <!-- SECTION 6: THE JOURNEY -->
             <section id="the-journey" class="page-section journey-page">
                 <img src="assets/images/bio%20LARGE%20copy.png" class="journey-hero-image" alt="The Journey">
                 <h1 class="page-title fade-in-text" style="margin-top: 2rem;">THE JOURNEY</h1>
@@ -193,14 +206,10 @@
                     </div>
                 </div>
 
-                <div class="bottom-labels fade-in-text">
-                    <a href="studio.html" class="label" style="text-decoration: none; cursor: pointer;">SPARK.STUDIO</a>
-                    <span class="label">SPARK.LAB</span>
-                    <span class="label">SPARK.AI</span>
-                </div>
+
             </section>
 
-            <!-- SECTION 6: CONTACT US -->
+            <!-- SECTION 7: CONTACT US -->
             <section id="contact-us" class="page-section">
                 <h1 class="page-title fade-in-text">CONTACT US</h1>
 
@@ -249,11 +258,7 @@
                     </div>
                 </div>
 
-                <div class="bottom-labels fade-in-text">
-                    <a href="studio.html" class="label" style="text-decoration: none; cursor: pointer;">SPARK.STUDIO</a>
-                    <span class="label">SPARK.LAB</span>
-                    <span class="label">SPARK.AI</span>
-                </div>
+
             </section>
 
         </div>
@@ -270,6 +275,7 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script src="gemini-chat.js"></script>
 </body>
 
 </html>
