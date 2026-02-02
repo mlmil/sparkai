@@ -913,3 +913,22 @@ footer {
         border-radius: 8px;
     }
 }
+/* --- Instagram Link Styles --- */
+.nav-contact a {
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: auto; /* Enable clicking */
+    display: inline-block;
+    margin-top: 0.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-contact a:hover {
+    color: #d95d1e;
+    transform: scale(1.1);
+}
+
+.nav-contact svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
