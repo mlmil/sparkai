@@ -86,7 +86,7 @@ app.post('/api/chat', async (req, res) => {
     
     // Call Gemini API with your server-side API key
     const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
         {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -160,7 +160,7 @@ def chat():
     
     # Call Gemini API
     response = requests.post(
-        f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={os.getenv('GEMINI_API_KEY')}",
+        f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={os.getenv('GEMINI_API_KEY')}",
         json={
             'contents': contents,
             'generationConfig': {

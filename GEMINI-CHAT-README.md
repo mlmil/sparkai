@@ -50,8 +50,8 @@ When you first click the chat button on your website, you'll see an API key setu
 4. **Context-Aware** - AI knows about SPARK.AI services and can help customers
 
 ### Technical Details
-- **API Endpoint**: `generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent`
-- **Model**: Gemini Pro
+- **API Endpoint**: `generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`
+- **Model**: Gemini 2.5 Flash
 - **Storage**: localStorage for API key persistence
 - **Chat History**: Maintained in session for context-aware responses
 

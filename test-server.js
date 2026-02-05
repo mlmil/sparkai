@@ -43,33 +43,75 @@ const server = http.createServer((req, res) => {
             body += chunk.toString();
         });
 
-        req.on('end', () => {
+        req.on('end', async () => {
             try {
                 const data = JSON.parse(body);
                 const userMessage = data.message;
+                const history = data.history || [];
 
-                // Mock AI responses
-                const responses = [
-                    `Thanks for your message: "${userMessage}". This is a test response from the mock backend!`,
-                    `I received: "${userMessage}". In production, this would be an AI-powered response from Gemini.`,
-                    `You asked: "${userMessage}". Your backend will process this and return a real AI response.`,
-                    `Message received: "${userMessage}". The chat interface is working! Now connect your real backend.`
-                ];
+                // Check for API Key
+                const apiKey = process.env.GEMINI_API_KEY;
 
-                // Simulate processing delay
-                setTimeout(() => {
-                    const response = {
-                        response: responses[Math.floor(Math.random() * responses.length)]
-                    };
+                if (apiKey) {
+                    try {
+                        // Call Gemini API
+                        // Construct the full history for context if needed, but for now we'll send just the latest message
+                        // to keep it simple, or we can format the history. 
+                        // Let's start with a simple single-turn request to ensure connectivity.
 
-                    res.writeHead(200, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify(response));
+                        const apiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                contents: [{
+                                    parts: [{ text: userMessage }]
+                                }]
+                            })
+                        });
 
-                    console.log(`[CHAT] User: ${userMessage}`);
-                    console.log(`[CHAT] Bot: ${response.response}`);
-                }, 1000); // 1 second delay to simulate AI processing
+                        const result = await apiResponse.json();
+
+                        // Check for errors in response
+                        if (result.error) {
+                            console.error('Gemini API Error:', result.error);
+                            throw new Error(result.error.message || 'Gemini API Error');
+                        }
+
+                        const botResponse = result.candidates?.[0]?.content?.parts?.[0]?.text || "I didn't get a response from Gemini.";
+
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify({ response: botResponse }));
+
+                        console.log(`[CHAT] User: ${userMessage}`);
+                        console.log(`[CHAT] Gemini: ${botResponse.substring(0, 50)}...`);
+
+                    } catch (apiError) {
+                        console.error('API Call Failed:', apiError);
+                        res.writeHead(500, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify({ response: "Error connecting to Gemini API. Please check server logs." }));
+                    }
+                } else {
+                    // Fallback to MOCK responses if no key provided
+                    console.log('[CHAT] No API Key provided. Using mock response.');
+                    const responses = [
+                        `[MOCK] Thanks for your message: "${userMessage}". Set GEMINI_API_KEY to get real responses!`,
+                        `[MOCK] I received: "${userMessage}". This is a placeholder.`,
+                        `[MOCK] Connect me to Gemini by setting the API key in the server environment.`
+                    ];
+
+                    setTimeout(() => {
+                        const response = {
+                            response: responses[Math.floor(Math.random() * responses.length)]
+                        };
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify(response));
+                    }, 500);
+                }
 
             } catch (error) {
+                console.error('Request parsing error:', error);
                 res.writeHead(400, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ error: 'Invalid request' }));
             }
@@ -79,7 +121,9 @@ const server = http.createServer((req, res) => {
     }
 
     // Serve static files
-    let filePath = '.' + req.url;
+    const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
+    let filePath = '.' + parsedUrl.pathname;
+
     if (filePath === './') {
         filePath = './index.html';
     }
