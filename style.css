@@ -59,8 +59,7 @@ body {
     color: rgba(255, 255, 255, 0.7);
     font-family: 'Avenir Next', 'Avenir', sans-serif;
     font-weight: 500;
-    font-size: 1.5rem;
-    /* Much bigger */
+    font-size: 2.2rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: color 0.3s ease;
@@ -78,7 +77,7 @@ body {
     transform: translateY(-50%);
     display: flex;
     gap: 1.5rem;
-    text-align: right;
+    text-align: center;
     font-family: 'Avenir Next', 'Avenir', sans-serif;
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.6);
@@ -254,8 +253,9 @@ footer {
 }
 
 #home::before {
-    background-image: url('assets/images/home_bg.jpg');
-    opacity: 0.1;
+    background-image: url('assets/images/pexels-pixabay-159298.jpg');
+    opacity: 0.07;
+    filter: contrast(2.5) brightness(0.6);
 }
 
 #what-we-do::before {
@@ -280,8 +280,11 @@ footer {
 }
 
 #contact-us::before {
-    background-image: url('assets/images/pexels-pixabay-159298.jpg');
-    opacity: 0.4;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 1;
 }
 
 #spark-deploy::before {
@@ -989,4 +992,177 @@ footer {
     width: 20px;
     height: 20px;
     fill: currentColor;
+}
+
+/* --- Contact Schematic Styles --- */
+
+.schematic-frame {
+    width: 100%;
+    max-width: 860px;
+    position: relative;
+    padding: 3.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+/* L-shaped corner registration marks */
+.corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: rgba(217, 93, 30, 0.7);
+    border-style: solid;
+}
+.corner-tl { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.corner-tr { top: 0; right: 0; border-width: 1px 1px 0 0; }
+.corner-bl { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+.corner-br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+
+/* Title row with ruled line extending right */
+.schematic-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.schematic-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(217, 93, 30, 0.6), transparent);
+}
+
+/* Two-node contact layout */
+.schematic-blocks {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.schematic-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Crosshair node dot */
+.block-marker {
+    width: 8px;
+    height: 8px;
+    background: #d95d1e;
+    border-radius: 50%;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 0 14px rgba(217, 93, 30, 0.7);
+    position: relative;
+}
+
+.block-marker::before,
+.block-marker::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: rgba(217, 93, 30, 0.45);
+}
+
+.block-marker::before {
+    width: 1px;
+    height: 22px;
+    transform: translate(-50%, -50%);
+}
+
+.block-marker::after {
+    width: 22px;
+    height: 1px;
+    transform: translate(-50%, -50%);
+}
+
+.block-label {
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: #d95d1e;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.block-data {
+    font-family: 'Avenir', sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: #e0e0e0;
+    line-height: 1.9;
+}
+
+/* Vertical divider between nodes */
+.schematic-divider {
+    width: 1px;
+    height: 90px;
+    background: linear-gradient(to bottom, transparent, rgba(217, 93, 30, 0.35), transparent);
+    flex-shrink: 0;
+}
+
+/* Footer rule + brand links */
+.schematic-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.schematic-rule-bottom {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.08), transparent);
+}
+
+.schematic-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.schematic-links a,
+.schematic-links span {
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    color: rgba(255, 255, 255, 0.35);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.schematic-links a:hover {
+    color: #d95d1e;
+}
+
+.schematic-dot {
+    color: rgba(217, 93, 30, 0.45) !important;
+    letter-spacing: 0 !important;
+    font-size: 1rem !important;
+}
+
+@media (max-width: 600px) {
+    .schematic-frame {
+        padding: 2.5rem 1.5rem;
+        gap: 2rem;
+    }
+
+    .schematic-blocks {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .schematic-divider {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(217, 93, 30, 0.35), transparent);
+    }
 }
