@@ -23,11 +23,14 @@
         }
 
         .deployment-image {
-            max-width: 100%;
+            width: 100%;
+            max-width: 1200px;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            display: block;
+            margin: 0 auto;
         }
 
         .back-link {
@@ -45,16 +48,40 @@
         .back-link:hover {
             color: #d95d1e;
         }
+
+        @media (max-width: 768px) {
+            .deployment-container {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .deployment-header {
+                margin-bottom: 2rem;
+            }
+
+            .deployment-image {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .deployment-container {
+                padding: 5rem 1rem 2rem;
+            }
+
+            .deployment-header {
+                margin-bottom: 1.5rem;
+            }
+
+            .page-title {
+                font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+            }
+        }
     </style>
 </head>
 
 <body>
     <nav class="main-nav">
         <div class="nav-left">
-            <div class="nav-brand">
-                <img src="assets/images/gemini_logo.png" alt="Gemini Logo">
-                <span>POWERED BY GEMINI 3</span>
-            </div>
             <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -78,6 +105,11 @@
             </div>
         </div>
     </nav>
+
+    <div class="gemini-badge">
+        <img src="assets/images/gemini_logo.png" alt="Gemini Logo" class="gemini-badge-logo">
+        <span>POWERED BY GEMINI 3</span>
+    </div>
 
     <div class="deployment-container fade-in-text visible">
         <header class="deployment-header" style="margin-bottom: 1rem;">
