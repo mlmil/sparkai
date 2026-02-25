@@ -193,27 +193,31 @@ footer {
     margin-top: 0.5rem;
 }
 
-.powered-by {
+.gemini-badge {
+    position: fixed;
+    top: 4.5rem;
+    left: 2rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 2rem;
+    z-index: 100;
+    pointer-events: none;
 }
 
-.gemini-logo {
-    height: 28px;
+.gemini-badge-logo {
+    height: 14px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
-.powered-by span {
+.gemini-badge span {
     font-family: 'Avenir Next', 'Avenir', sans-serif;
-    font-size: 0.65rem;
-    color: rgba(255, 255, 255, 0.6);
-    letter-spacing: 1px;
+    font-size: 0.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.5px;
     font-weight: 500;
     text-transform: uppercase;
 }
@@ -1182,6 +1186,19 @@ footer {
 
     .main-nav a {
         font-size: 1rem;
+    }
+
+    .gemini-badge {
+        left: 1rem;
+        top: 4.2rem;
+    }
+
+    .gemini-badge-logo {
+        height: 12px;
+    }
+
+    .gemini-badge span {
+        font-size: 0.45rem;
     }
 
     .schematic-frame {
