@@ -874,6 +874,21 @@ footer {
     line-height: 1.6;
 }
 
+@media (max-width: 1024px) {
+    /* Tablet: hide nav contact to reduce crowding */
+    .nav-contact {
+        display: none;
+    }
+
+    .main-nav ul {
+        gap: 3rem;
+    }
+
+    .main-nav a {
+        font-size: 1.5rem;
+    }
+}
+
 @media (max-width: 768px) {
     .header-info {
         display: none;
@@ -1150,6 +1165,34 @@ footer {
 }
 
 @media (max-width: 600px) {
+    /* Hide nav contact info on mobile to prevent overlap */
+    .nav-contact {
+        display: none;
+    }
+
+    /* Adjust nav brand for mobile */
+    .nav-brand span {
+        font-size: 0.5rem;
+    }
+
+    /* Reduce nav left spacing */
+    .nav-left {
+        gap: 0.8rem;
+        left: 1rem;
+    }
+
+    .nav-brand img {
+        height: 24px;
+    }
+
+    .main-nav ul {
+        gap: 2rem;
+    }
+
+    .main-nav a {
+        font-size: 1rem;
+    }
+
     .schematic-frame {
         padding: 2.5rem 1.5rem;
         gap: 2rem;
