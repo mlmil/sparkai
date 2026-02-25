@@ -99,34 +99,9 @@ body {
     transform: translateY(-50%);
     display: flex;
     flex-direction: row;
-    /* Horizontal layout for Brand + Icon */
     align-items: center;
     gap: 1.5rem;
-    /* Space between brand and icon */
     pointer-events: none;
-}
-
-.nav-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
-}
-
-.nav-brand img {
-    height: 32px;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-    opacity: 0.9;
-}
-
-.nav-brand span {
-    font-family: 'Avenir Next', 'Avenir', sans-serif;
-    font-size: 0.6rem;
-    color: rgba(255, 255, 255, 0.7);
-    letter-spacing: 1px;
-    font-weight: 500;
 }
 
 /* --- Instagram Link Styles (Moved to Left) --- */
@@ -216,6 +191,31 @@ footer {
     /* Reduced height slightly */
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
     margin-top: 0.5rem;
+}
+
+.powered-by {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.gemini-logo {
+    height: 28px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    opacity: 0.8;
+}
+
+.powered-by span {
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
 /* Optional: Background texture/noise to give it that industrial feel */
@@ -1170,19 +1170,10 @@ footer {
         display: none;
     }
 
-    /* Adjust nav brand for mobile */
-    .nav-brand span {
-        font-size: 0.5rem;
-    }
-
     /* Reduce nav left spacing */
     .nav-left {
         gap: 0.8rem;
         left: 1rem;
-    }
-
-    .nav-brand img {
-        height: 24px;
     }
 
     .main-nav ul {
